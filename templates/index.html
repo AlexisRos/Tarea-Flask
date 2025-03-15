@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interfaz con Componentes</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Interfaz con Componentes</h1>
+
+        {% if mensaje %}
+            {% include 'components/alert.html' %}
+        {% endif %}
+
+        <form method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre"><br><br>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje"></textarea><br><br>
+
+            <input type="submit" value="Enviar">
+            <button type="button" id="borrar">Borrar</button>
+        </form>
+
+        {% if resultado_nombre or resultado_mensaje %}
+            {% include 'components/resultado.html' %}
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
